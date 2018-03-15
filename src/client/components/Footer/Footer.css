@@ -1,0 +1,15 @@
+.footer {
+    max-height: 120px;
+}
+
+.footer__left {
+
+}
+
+.footer__right {
+    text-align: end;
+}
+
+.footer__right__logo {
+    height: 50px;
+}

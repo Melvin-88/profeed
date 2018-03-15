@@ -1,0 +1,128 @@
+/**
+*
+* {{ properCase name }}
+*
+*/
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import RaisedButton from 'material-ui/RaisedButton';
+{{#if wantMessages}}
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
+{{/if}}
+import { modelSelector } from './selectors.js';
+import { containerActions } from './actions.js';
+import Table{{ removePage name }} from 'client/components/tables/Table{{ removePage name }}';
+import Dialog{{ removePage name }}Add from 'client/components/dialogs/{{ lowerCase (removePage name) }}/Dialog{{ removePage name }}Add';
+import Dialog{{ removePage name }}Edit from 'client/components/dialogs/{{ lowerCase (removePage name) }}/Dialog{{ removePage name }}Edit';
+import Dialog{{ removePage name }}Remove from 'client/components/dialogs/{{ lowerCase (removePage name) }}/Dialog{{ removePage name }}Remove';
+{{#if wantCSS}}
+import styles from './styles.css';
+{{/if}}
+
+const propTypes = {
+  farmId : PropTypes.string,
+  {{ lowerCase (removePage name) }} : PropTypes.array,
+  get{{ removePage name }} : PropTypes.func,
+  show{{ removePage name }}AddDialog : PropTypes.func,
+  show{{ removePage name }}EditDialog : PropTypes.func,
+  show{{ removePage name }}RemoveDialog : PropTypes.func,
+  permission : PropTypes.object
+};
+const defaultProps = { };
+
+class {{ properCase name }} extends Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      checked{{ removePage name }} : null
+    };
+  }
+
+  componentDidMount() {
+    const { get{{ removePage name }}, farmId } = this.props;
+
+    get{{ removePage name }}(farmId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { {{ lowerCase (removePage name) }} } = this.props;
+    const { {{ lowerCase (removePage name) }} : new{{ removePage name }} } = nextProps;
+
+    if ({{ lowerCase (removePage name) }} && {{ lowerCase (removePage name) }} !== new{{ removePage name }}) {
+      this.setState({ checked{{ removePage name }} : null });
+    }
+  }
+
+  handleChangeCheckedRow(row) {
+    this.setState({
+      checked{{ removePage name }} : this.state.checked{{ removePage name }} === row ? null : row
+    });
+  }
+// Handlers for click
+  handleAdd{{ removePage name }}Modal() {
+    const { show{{ removePage name }}AddDialog } = this.props;
+
+    show{{ removePage name }}AddDialog();
+  }
+
+  handleEdit{{ removePage name }}Modal() {
+    const { show{{ removePage name }}EditDialog, {{ lowerCase (removePage name) }} } = this.props;
+    const { checked{{ removePage name }} } = this.state;
+    const data = {{ lowerCase (removePage name) }}.find((item) => item.id === checked{{ removePage name }});
+
+    show{{ removePage name }}EditDialog(data);
+  }
+
+  handleRemove{{ removePage name }}Modal() {
+    const { show{{ removePage name }}RemoveDialog, {{ lowerCase (removePage name) }} } = this.props;
+    const { checked{{ removePage name }} } = this.state;
+    const data = {{ lowerCase (removePage name) }}.find((item) => item.id === checked{{ removePage name }});
+
+    show{{ removePage name }}RemoveDialog(data);
+  }
+
+  render() {
+    const { {{ lowerCase (removePage name) }}, permission } = this.props;
+    const { checked{{ removePage name }} } = this.state;
+
+    return permission && permission.view ? (
+      {{#if wantCSS}}
+      <div className={{curly true}}styles.{{ camelCase name }}{{curly}}>
+      {{else}}
+      <div className='{{ lowerCase (splitUpperByHyphen name) }}-container'>
+      {{/if}}
+        <div className='page-title'>
+          <h1>
+              {{#if wantMessages}}
+                  <FormattedMessage {...messages.title} />
+              {{/if}}
+          </h1>
+        </div>
+        {permission.add ? <RaisedButton className='page-button button-add' label={'Додати'} primary
+          onTouchTap={::this.handleAdd{{ removePage name }}Modal}
+        /> : null}
+        {permission.change ? <RaisedButton className={`page-button ${checked{{ removePage name }} ? 'button-edit' : ''}`}
+          label={'Редагувати '} onTouchTap={::this.handleEdit{{ removePage name }}Modal} disabled={!checked{{ removePage name }} }
+        /> : null}
+        {permission.delete ? <RaisedButton className={`page-button ${checked{{ removePage name }} ? 'button-remove' : ''}`}
+          label={'Видалити '} onTouchTap={::this.handleRemove{{ removePage name }}Modal} disabled={!checked{{ removePage name }} }
+        /> : null}
+        <br />
+        <Table{{ removePage name }} tableData={{curly true}}{{ lowerCase (removePage name) }}{{curly}} onChangeCheckedRow={::this.handleChangeCheckedRow} />
+        <br/>
+        {permission.add ? <Dialog{{ removePage name }}Add /> : null}
+        {permission.change ? <Dialog{{ removePage name }}Edit /> : null}
+        {permission.delete ? <Dialog{{ removePage name }}Remove /> : null}
+      </div>
+    ) : null;
+  }
+}
+
+{{ properCase name }}.propTypes = propTypes;
+{{ properCase name }}.defaultProps = defaultProps;
+
+export default connect(modelSelector, containerActions)({{ properCase name }});

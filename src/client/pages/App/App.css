@@ -1,0 +1,83 @@
+.App {
+    display: flex;
+    align-items: stretch;
+    min-height: 100vh;
+}
+
+.App__flex {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    width: calc(100% - 20px) !important;
+}
+
+.App h1 {
+    font-size: 26px;
+}
+
+.App input {
+    padding: 10px;
+}
+
+.App hr {
+    margin-top: 32px;
+}
+
+.align-right {
+    text-align: right !important;
+}
+
+.table-td-width {
+    width: 5% !important;
+    /* text-align: center !important;*/
+}
+
+.first-line-header th:first-child {
+    width: 5% !important;
+}
+
+.page-button {
+    margin : 10px 20px 10px 0 !important;
+}
+
+.button-add button {
+    background-color: #3aa648 !important;
+}
+
+.button-edit button {
+    background-color: #2e59a6 !important;
+}
+
+.button-remove button {
+    background-color: #be0600 !important;
+}
+
+.button-add button span, .button-edit button span, .button-remove button span {
+    color: #fff !important;
+}
+
+.dialog-form__input, .dialog-datepicker__input > div:first-child {
+    display: block !important;
+    margin: 0px auto !important;
+}
+
+.page-title {
+    text-align: center;
+}
+
+.table__input {
+    min-width: 40px;
+    width: 50% !important;
+}
+
+.content-center {
+    text-align: center !important;
+}
+
+.content-right {
+    text-align: right !important;
+}
+
+.error-message {
+
+}

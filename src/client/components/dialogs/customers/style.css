@@ -1,0 +1,12 @@
+.dialog-customer-form {
+    width: 100% !important;
+}
+
+.dialog-customer-form__label {
+
+}
+
+.dialog-customer-form__input {
+    display: block !important;
+    margin: 0px auto !important;
+}

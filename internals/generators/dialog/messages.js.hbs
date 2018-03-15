@@ -1,0 +1,29 @@
+/*
+ * {{ properCase name }} Messages
+ *
+ * This contains all the text for the {{ properCase name }} component.
+ */
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  title: {
+    id: 'app.components.{{ properCase name }}.dialog.title',
+    defaultMessage: 'This is the {{ properCase name}} component !'
+  },
+  form : {
+    {{ lowerCase (properCase name) }}: {
+      id: 'app.components.{{ properCase name }}.dialog.form.ingredients',
+      defaultMessage: '{{ properCase name }}'
+    }
+  },
+  button: {
+    cancel :  {
+      id: 'app.components.{{ properCase name }}.dialog.button.cancel',
+      defaultMessage: 'Cancel'
+    },
+    save :  {
+      id: 'app.components.{{ properCase name }}.dialog.button.save',
+      defaultMessage: 'Save'
+    }
+  }
+});

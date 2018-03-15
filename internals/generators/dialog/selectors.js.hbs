@@ -1,0 +1,16 @@
+/*
+* {{ properCase name }} Selectors
+*
+* This contains all the text for the {{ properCase name }} component.
+*/
+
+import { createStructuredSelector } from 'reselect';
+import { getFarmId } from 'helpers/selectorsHelper';
+
+export const modelSelector = createStructuredSelector({
+  open : state => state.{{ lowerCase (properCase dtype) }}{{ properCase name }}Dialog.open,
+  locked : state => state.{{ lowerCase (properCase dtype) }}{{ properCase name }}Dialog.locked,
+  error : state => state.{{ lowerCase (properCase dtype) }}{{ properCase name }}Dialog.error,
+  errorMessage : state => state.{{ lowerCase (properCase dtype) }}{{ properCase name }}Dialog.errorMessage,
+  farmId : state => getFarmId(state)
+});

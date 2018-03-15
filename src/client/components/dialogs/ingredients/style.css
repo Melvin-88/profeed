@@ -1,0 +1,12 @@
+.dialog-ingredients-form {
+    width: 100% !important;
+}
+
+.dialog-ingredients-form__label {
+
+}
+
+.dialog-ingredients-form__input {
+    display: block !important;
+    margin: 0px auto !important;
+}

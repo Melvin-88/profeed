@@ -1,0 +1,27 @@
+/*
+* {{ properCase name }} Actions
+*
+* This contains all the text for the {{ properCase name }} component.
+*/
+import { takeEvery, call, put } from 'redux-saga/effects'; // , take, call, put, race
+import * as actions from './actions.js';
+import serverApi from 'api';
+
+function* submit{{ properCase dtype }}{{ properCase name }}(action) {
+  // const { name } = action.payload;
+
+  // const data = { };
+
+  try {
+    // yield call(serverApi.{{ lowerCase (properCase dtype) }}{{ properCase name }}, data);
+    yield put(actions.responseSuccess());
+    yield put(actions.closeDialog());
+  } catch (e) {
+    console.error('DialogFarms | submitAddFarm error ', e);
+    yield put(actions.responseError(e.statusText));
+  }
+}
+
+export default function* mainSaga() {
+  yield takeEvery(actions.DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT, submit{{ properCase dtype }}{{ properCase name }});
+}

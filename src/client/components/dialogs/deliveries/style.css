@@ -1,0 +1,12 @@
+.dialog-delivery-form {
+    width: 100% !important;
+}
+
+.dialog-delivery-form__label {
+
+}
+
+.dialog-delivery-form__input {
+    display: block !important;
+    margin: 0px auto !important;
+}

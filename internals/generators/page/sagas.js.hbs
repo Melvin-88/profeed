@@ -1,0 +1,57 @@
+/*
+* {{ properCase name }} Actions
+*
+* This contains all the text for the {{ properCase name }} component.
+*/
+import { takeEvery, put, call, select } from 'redux-saga/effects'; // , take, call, put, race
+import * as actions from './actions.js';
+import { actions as dialogAddActions } from 'client/components/dialogs/{{ lowerCase (removePage name) }}/Dialog{{ removePage name }}Add';
+import { actions as dialogEditActions } from 'client/components/dialogs/{{ lowerCase (removePage name) }}/Dialog{{ removePage name }}Edit';
+import { actions as dialogRemoveActions } from 'client/components/dialogs/{{ lowerCase (removePage name) }}/Dialog{{ removePage name }}Remove';
+import { getFarmId } from 'helpers/selectorsHelper';
+import serverApi from 'api';
+
+function* get{{ removePage name }}(action) {
+  const { payload } = action;
+
+  try {
+    const res = yield call(serverApi.get{{ removePage name }}, payload.farmId);
+
+    yield put(actions.set{{ removePage name }}(res.data));
+  } catch (e) {
+    console.error('error ', e);
+  }
+}
+
+function* add{{ removePage name }}DialogShow() {
+  yield put(dialogAddActions.openDialog());
+}
+
+function* edit{{ removePage name }}DialogShow(action) {
+  yield put(dialogEditActions.openDialog(action.payload.{{ lowerCase (removePage name) }}));
+}
+
+function* remove{{ removePage name }}DialogShow(action) {
+  yield put(dialogRemoveActions.openDialog(action.payload.{{ lowerCase (removePage name) }}));
+}
+
+function* update{{ removePage name }}() {
+  const state = yield select();
+  const data = {
+    payload : {
+      farmId : getFarmId(state)
+    }
+  };
+
+  yield get{{ removePage name }}(data);
+}
+
+export default function* mainSaga() {
+  yield takeEvery(actions.{{ splitUpperByUnderscore name }}_GET, get{{ removePage name }});
+  yield takeEvery(actions.{{ splitUpperByUnderscore name }}_CALL_SHOW_ADD_DIALOG, add{{ removePage name }}DialogShow);
+  yield takeEvery(actions.{{ splitUpperByUnderscore name }}_CALL_SHOW_EDIT_DIALOG, edit{{ removePage name }}DialogShow);
+  yield takeEvery(actions.{{ splitUpperByUnderscore name }}_CALL_SHOW_REMOVE_DIALOG, remove{{ removePage name }}DialogShow);
+  yield takeEvery(dialogAddActions.DIALOG_{{ upperCase (removePage name) }}_SUBMIT_SUCCESS, update{{ removePage name }});
+  yield takeEvery(dialogEditActions.DIALOG_{{ upperCase (removePage name) }}_SUBMIT_SUCCESS, update{{ removePage name }});
+  yield takeEvery(dialogRemoveActions.DIALOG_{{ upperCase (removePage name) }}_SUBMIT_SUCCESS, update{{ removePage name }});
+}

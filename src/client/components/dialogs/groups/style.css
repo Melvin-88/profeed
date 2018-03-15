@@ -1,0 +1,12 @@
+.dialog-group-form {
+    width: 100% !important;
+}
+
+.dialog-group-form__label {
+
+}
+
+.dialog-group-form__input {
+    display: block !important;
+    margin: 0px auto !important;
+}

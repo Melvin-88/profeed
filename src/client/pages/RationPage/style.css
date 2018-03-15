@@ -1,0 +1,11 @@
+.ration-page__head {
+    padding: 15px;
+}
+
+.ration-page__head, .ration-page__loadings, .ration-page__ingredients, .ration-page__groups {
+    margin: 15px 10px !important;
+}
+
+.ration-page-button {
+    margin: 10px !important;
+}

@@ -1,0 +1,20 @@
+.register-page .dialog-form__label {
+    color : rgb(0, 188, 212);
+}
+
+.register-page .dialog-form {
+    margin: auto;
+}
+
+.register-page .register-button {
+    margin: 10px;
+}
+
+.register-page-login-lnk a {
+    text-decoration: overline;
+    color: #00c2e0;
+}
+
+.languages-link-container {
+    text-align: end;
+}

@@ -1,0 +1,16 @@
+.active-item-menu {
+    background-color: rgba(29, 166, 67, 0.51) !important;
+    color : #ffffff !important;
+}
+
+.active-item-menu svg {
+    fill : rgb(255, 255, 255) !important;
+}
+
+.locked-item-menu {
+    color : #a3a3a3 !important;
+}
+
+.locked-item-menu svg {
+    fill : rgb(163, 163, 163) !important;
+}

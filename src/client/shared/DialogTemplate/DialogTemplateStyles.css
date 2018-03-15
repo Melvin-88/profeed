@@ -1,0 +1,11 @@
+.dialog {
+    width: 500px;
+}
+
+.dialog__container {
+    width: 460px !important;
+}
+
+.dialog__container.dialog-extend {
+    width: 75% !important;
+}

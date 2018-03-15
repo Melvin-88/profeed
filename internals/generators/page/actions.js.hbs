@@ -1,0 +1,39 @@
+/*
+* {{ properCase name }} Actions
+*
+* This contains all the text for the {{ properCase name }} component.
+*/
+import { bindActionCreators } from 'redux';
+export const {{ splitUpperByUnderscore name }}_GET = '{{ properCase name }}/{{ splitUpperByUnderscore name }}_GET';
+export const {{ splitUpperByUnderscore name }}_SET = '{{ properCase name }}/{{ splitUpperByUnderscore name }}_SET';
+export const {{ splitUpperByUnderscore name }}_CALL_SHOW_ADD_DIALOG = '{{ properCase name }}/{{ splitUpperByUnderscore name }}_CALL_SHOW_ADD_DIALOG';
+export const {{ splitUpperByUnderscore name }}_CALL_SHOW_EDIT_DIALOG = '{{ properCase name }}/{{ splitUpperByUnderscore name }}_CALL_SHOW_EDIT_DIALOG';
+export const {{ splitUpperByUnderscore name }}_CALL_SHOW_REMOVE_DIALOG = '{{ properCase name }}/{{ splitUpperByUnderscore name }}_CALL_SHOW_REMOVE_DIALOG';
+
+function get{{ removePage name }}(farmId) {
+  return { type : {{ splitUpperByUnderscore name }}_GET, payload : { farmId } };
+}
+
+function set{{ removePage name }}({{ lowerCase (removePage name) }}) {
+  return { type :{{ splitUpperByUnderscore name }}_SET, payload : { {{ lowerCase (removePage name) }} } };
+}
+
+function show{{ removePage name }}AddDialog() {
+  return { type : {{ splitUpperByUnderscore name }}_CALL_SHOW_ADD_DIALOG };
+}
+
+function show{{ removePage name }}EditDialog({{ lowerCase (removePage name) }}) {
+  return { type : {{ splitUpperByUnderscore name }}_CALL_SHOW_EDIT_DIALOG, payload : { {{ lowerCase (removePage name) }} } };
+}
+
+function show{{ removePage name }}RemoveDialog({{ lowerCase (removePage name) }}) {
+  return { type : {{ splitUpperByUnderscore name }}_CALL_SHOW_REMOVE_DIALOG, payload : { {{ lowerCase (removePage name) }} } };
+}
+
+function containerActions(dispatch) {
+  return bindActionCreators({ get{{ removePage name }}, set{{ removePage name }}, show{{ removePage name }}AddDialog,
+    show{{ removePage name }}EditDialog, show{{ removePage name }}RemoveDialog }, dispatch);
+}
+
+export { containerActions, get{{ removePage name }}, set{{ removePage name }}, show{{ removePage name }}AddDialog,
+    show{{ removePage name }}EditDialog, show{{ removePage name }}RemoveDialog };

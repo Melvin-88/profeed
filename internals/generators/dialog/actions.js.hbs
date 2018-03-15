@@ -1,0 +1,37 @@
+/*
+* {{ properCase name }} Actions
+*
+* This contains all the text for the {{ properCase name }} component.
+*/
+import { bindActionCreators } from 'redux';
+export const DIALOG_{{ splitUpperByUnderscore name }}_OPEN = 'Dialog{{ properCase name }}{{ properCase dtype }}/DIALOG_{{ splitUpperByUnderscore name }}_OPEN';
+export const DIALOG_{{ splitUpperByUnderscore name }}_CLOSE = 'Dialog{{ properCase name }}{{ properCase dtype }}/DIALOG_{{ splitUpperByUnderscore name }}_CLOSE';
+export const DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT = 'Dialog{{ properCase name }}{{ properCase dtype }}/DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT';
+export const DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT_SUCCESS = 'Dialog{{ properCase name }}{{ properCase dtype }}/DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT_SUCCESS';
+export const DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT_ERROR = 'Dialog{{ properCase name }}{{ properCase dtype }}/DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT_ERROR';
+
+function openDialog() {
+  return { type : DIALOG_{{ splitUpperByUnderscore name }}_OPEN };
+}
+
+function closeDialog() {
+  return { type : DIALOG_{{ splitUpperByUnderscore name }}_CLOSE };
+}
+
+function submit{{ properCase dtype }}{{ properCase name }}() {
+  return { type : DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT };
+}
+
+function responseSuccess() {
+  return { type : DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT_SUCCESS };
+}
+
+function responseError(errorMessage) {
+  return { type : DIALOG_{{ splitUpperByUnderscore name }}_SUBMIT_ERROR, payload : { errorMessage } };
+}
+
+function containerActions(dispatch) {
+  return bindActionCreators({ closeDialog, openDialog, submit{{ properCase dtype }}{{ properCase name }}, responseError, responseSuccess }, dispatch);
+}
+
+export { containerActions, closeDialog, openDialog, submit{{ properCase dtype }}{{ properCase name }}, responseError, responseSuccess };
